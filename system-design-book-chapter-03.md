@@ -434,7 +434,7 @@ class DispatcherTest {
 }
 ```
 
-No database, no network, no credentials, runs in single-digit milliseconds, and it verifies logic that genuinely used to break in production. Notice the enabling detail: the constructor takes interfaces, so the test supplies fakes. **Constructor injection is what makes this possible**, which is the practical reason to prefer it over `@Autowired` on fields. Chapter 109 covers dependency injection properly.
+No database, no network, no credentials, runs in single-digit milliseconds, and it verifies logic that genuinely used to break in production. Notice the enabling detail: the constructor takes interfaces, so the test supplies fakes. **Constructor injection is what makes this possible**, which is the practical reason to prefer it over `@Autowired` on fields. Chapter 85 covers dependency injection properly.
 
 The rule to internalise: if a test is hard to write, do not reach for a heavier mocking framework. Change the design. The test is telling you the truth about coupling.
 
@@ -557,13 +557,13 @@ This turns a failure into a silent success. The caller believes the notification
 
 ### 3.5.8 Where patterns and principles fit
 
-Everything above is LLD reasoning, and you may have noticed that named patterns appeared without being announced. `ChannelSender` with one implementation per channel selected at runtime is the **Strategy** pattern (Chapter 103). `SenderRegistry` is a **Factory** of sorts (Chapter 100). `NotificationRepository` is **Repository** (Chapter 108). Constructor injection is **Dependency Injection** (Chapter 109). Wrapping a sender to add retry without changing it is **Decorator** (Chapter 104).
+Everything above is LLD reasoning, and you may have noticed that named patterns appeared without being announced. `ChannelSender` with one implementation per channel selected at runtime is the **Strategy** pattern (Chapter 83). `SenderRegistry` is a **Factory** of sorts (Chapter 82). `NotificationRepository` is **Repository** (Chapter 85). Constructor injection is **Dependency Injection** (Chapter 85). Wrapping a sender to add retry without changing it is **Decorator** (Chapter 84).
 
-The order matters enormously for how you learn this. The patterns are names for solutions that fall out of asking "what varies, and where should the seam be". Part 3 covers all of them properly, with the five SOLID principles in Chapter 98 that describe the same instincts from a different angle. What you should not do is start from the pattern catalogue and look for places to apply them, because that produces `AbstractNotificationStrategyFactoryProvider` and a codebase that is harder to read than the if-chain it replaced.
+The order matters enormously for how you learn this. The patterns are names for solutions that fall out of asking "what varies, and where should the seam be". Part 3 covers all of them properly, with the five SOLID principles in Chapter 81 that describe the same instincts from a different angle. What you should not do is start from the pattern catalogue and look for places to apply them, because that produces `AbstractNotificationStrategyFactoryProvider` and a codebase that is harder to read than the if-chain it replaced.
 
 ## 3.6 Architecture Diagram
 
-The class-level view of the dispatcher after the refactor. This is a class diagram, the LLD equivalent of Chapter 2's container diagram, and Chapter 110 covers the notation in full.
+The class-level view of the dispatcher after the refactor. This is a class diagram, the LLD equivalent of Chapter 2's container diagram, and Chapter 86 covers the notation in full.
 
 ```mermaid
 classDiagram
@@ -659,7 +659,7 @@ Read the diagram for its shape rather than its detail. `Dispatcher` sits at the 
 
 ## 3.7 Request Flow
 
-Chapter 2's sequence diagram had services as participants. LLD sequence diagrams have objects and methods. Same notation, different zoom, and Chapter 111 goes deeper.
+Chapter 2's sequence diagram had services as participants. LLD sequence diagrams have objects and methods. Same notation, different zoom, and Chapter 86 goes deeper.
 
 The path where SMS is permanently undeliverable and falls back to email:
 
@@ -746,7 +746,7 @@ Supplier<Quote> guarded = Decorators.ofSupplier(() -> pricingClient.quote(cartId
         .decorate();
 ```
 
-The business call is untouched. The resilience behaviour is composed around it, and can be changed per dependency without editing business logic. This is Decorator (Chapter 104) doing real work, and Chapters 60 and 61 cover the underlying patterns.
+The business call is untouched. The resilience behaviour is composed around it, and can be changed per dependency without editing business logic. This is Decorator (Chapter 84) doing real work, and Chapters 60 and 61 cover the underlying patterns.
 
 **Java's own collections.** You write `List<String> names` rather than `ArrayList<String> names` because it lets you change the implementation without touching the callers. Every Java developer already does correct LLD here, out of habit, without calling it design. The point of this chapter is doing it deliberately for your own domain concepts too.
 
@@ -813,7 +813,7 @@ Three of those four abstractions clearly earn their place. One depends on how ma
 
 **Field injection everywhere.** `@Autowired` on private fields means the class can be constructed in an invalid state and cannot be unit tested without a Spring context. Constructor injection makes dependencies visible and testing trivial, and if the constructor has eleven parameters, that is the class telling you it does eleven things.
 
-**Deep inheritance.** `AbstractBaseNotificationSenderImpl` extending three levels. Behaviour becomes impossible to locate. Prefer composition; Chapter 97 covers when inheritance is actually right.
+**Deep inheritance.** `AbstractBaseNotificationSenderImpl` extending three levels. Behaviour becomes impossible to locate. Prefer composition; Chapter 80 covers when inheritance is actually right.
 
 **Catch, log, continue.** Discussed in Section 3.5.7, and worth listing twice because it is the single most common way real systems lose data quietly.
 

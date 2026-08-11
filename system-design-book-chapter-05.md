@@ -321,7 +321,7 @@ The other artifact that finds gaps mechanically. Actors down the side, actions a
 | Export a user's history | Own only | On request, audited | Yes | No | No |
 | Delete history | No | No | Legal request only | No | No |
 
-Empty cells are unanswered questions, and "redacted" and "audited" in those cells are requirements that would never have appeared in prose. The matrix also caught something structural: support agents can read any user's notification content, which is a privacy decision that needs an owner and probably needs redaction rules. Chapter 72 covers authorisation models.
+Empty cells are unanswered questions, and "redacted" and "audited" in those cells are requirements that would never have appeared in prose. The matrix also caught something structural: support agents can read any user's notification content, which is a privacy decision that needs an owner and probably needs redaction rules. Chapter 66 covers authorisation models.
 
 ### 5.5.8 Which functional requirements change the architecture
 
@@ -339,7 +339,7 @@ Most functional requirements cost roughly what they look like they cost. A speci
 | Search, find, filter by | A search index, kept in sync asynchronously, with its own staleness |
 | History, audit, who changed | Append-only storage and a retention policy, often immutable by law |
 | Export, download all | Batch jobs, large payloads, and a delivery mechanism that is not the request path |
-| Real time, live, instantly | Push transport such as WebSockets, plus connection state (Chapter 84) |
+| Real time, live, instantly | Push transport such as WebSockets, plus connection state (Chapter 73) |
 | Offline, sync | Client-side storage, conflict resolution, and merge semantics |
 | Across, between, aggregate | Cross-entity queries that a sharded store cannot serve directly (Chapter 42) |
 | Per user, per day, at most | Shared counters read on the hot path, which is a new dependency |
@@ -373,7 +373,7 @@ A complete requirement list is not a build list. The list exists so you can choo
 
 That third bucket is the one people collapse into the second, and it is where Section 5.1 went wrong. Cancellation was not on the list at all, but had it been on the list and deferred, the correct response would have been to include a notification status store from the start and check it before sending, with cancellation as the only unimplemented piece. That is one afternoon on day one against a redesign in month nine.
 
-The judgement to make explicit in your design doc: **for every deferred requirement, state whether it is cheap or expensive to retrofit, and for the expensive ones, name the seam you are leaving.** Chapter 134 covers this as the future-improvements section of an interview answer, and it is one of the strongest signals of experience a candidate can give.
+The judgement to make explicit in your design doc: **for every deferred requirement, state whether it is cheap or expensive to retrofit, and for the expensive ones, name the seam you are leaving.** Chapter 101 covers this as the future-improvements section of an interview answer, and it is one of the strongest signals of experience a candidate can give.
 
 Non-goals deserve the same treatment they got in Chapter 2. "We are not supporting in-app notification inboxes in v1" prevents three weeks of assumed scope, and it costs one line.
 
@@ -493,7 +493,7 @@ The artifacts of requirements work, with the removal test applied.
 | Traceability from requirement to component | Justifies every box | Boxes accumulate without reasons, which Chapter 2 warned about |
 | Open questions list | Names what is undecided | Undecided things get decided silently, by whoever writes the code first |
 
-The glossary is the one people find surprising. On the notification platform, "notification" meant the request, the individual per-channel send, and the thing the user sees, depending on who was speaking. That ambiguity landed in the schema, and the API had a `notificationId` that sometimes identified one thing and sometimes another. One page of definitions prevents a genuinely nasty class of confusion, and Chapter 112 covers how entity naming propagates into your data model.
+The glossary is the one people find surprising. On the notification platform, "notification" meant the request, the individual per-channel send, and the thing the user sees, depending on who was speaking. That ambiguity landed in the schema, and the API had a `notificationId` that sometimes identified one thing and sometimes another. One page of definitions prevents a genuinely nasty class of confusion, and Chapter 86 covers how entity naming propagates into your data model.
 
 ## 5.9 Production Example
 
@@ -503,7 +503,7 @@ The mechanism is unremarkable and the effect is exactly this chapter. Writing a 
 
 **WhatsApp's delete for everyone is a public example of a retrofit constraint.** When the ability to delete a sent message was added, it came with a time limit for recall, and the feature's behaviour depends on whether the recipient's device has already received and stored the message. That shape is not a product preference; it falls out of an architecture where messages are pushed to devices and the server does not retain delivered content indefinitely. The recall window exists because of what the system already was.
 
-The lesson is not that WhatsApp got it wrong. It is that "users can delete a sent message" looks like a small feature and is entirely determined by decisions made years earlier about where messages live. If that requirement had been present at the start, the design would have differed. Chapter 138 covers the architecture and Chapter 84 the delivery mechanics.
+The lesson is not that WhatsApp got it wrong. It is that "users can delete a sent message" looks like a small feature and is entirely determined by decisions made years earlier about where messages live. If that requirement had been present at the start, the design would have differed. Chapter 103 covers the architecture and Chapter 73 the delivery mechanics.
 
 **Shape Up, from 37signals, inverts the usual order with the concept of appetite.** Instead of asking how long a feature will take, you decide how much time it is worth, then shape a solution that fits. Requirements are deliberately shaped at a middle level of detail: concrete enough to be buildable, abstract enough to leave the team room.
 

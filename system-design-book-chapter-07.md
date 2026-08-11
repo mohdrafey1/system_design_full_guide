@@ -410,7 +410,7 @@ Six queues, and a typical dashboard shows none of them. When someone says "the s
 
 ## 7.7 Request Flow
 
-A tail request autopsy: the same endpoint, at p50 and at p99, hop by hop. This is the exercise to run whenever a p99 target is missed, and Chapter 70's distributed tracing is what makes it possible in production.
+A tail request autopsy: the same endpoint, at p50 and at p99, hop by hop. This is the exercise to run whenever a p99 target is missed, and Chapter 65's distributed tracing is what makes it possible in production.
 
 ```mermaid
 sequenceDiagram
@@ -479,7 +479,7 @@ Every place latency accumulates, what to measure there, and what happens if you 
 | Serialisation | 1 to 20 ms | Payload size, encode time | Rarely a problem, frequently blamed |
 | Network back to client | RTT, plus bandwidth for large payloads | Real user monitoring | Server-side numbers look great and users disagree |
 
-The two rows to instrument first, if you instrument nothing else, are **time in queue** and **connection pool wait**. They are the largest tail contributors in most systems and the least commonly measured. Chapter 69 covers metric design.
+The two rows to instrument first, if you instrument nothing else, are **time in queue** and **connection pool wait**. They are the largest tail contributors in most systems and the least commonly measured. Chapter 64 covers metric design.
 
 ## 7.9 Production Example
 

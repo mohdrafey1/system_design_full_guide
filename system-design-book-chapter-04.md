@@ -170,8 +170,8 @@ This is the section to reread. Every HLD choice imposes non-negotiable requireme
 | Cache in front of a store (Chapter 34) | Invalidation on write, stampede protection, negative caching, and a defined behaviour on cache outage | Stale data forever, or the database collapsing when the cache restarts |
 | Multi-region or multi-leader (Chapter 45) | No wall-clock ordering across regions, explicit conflict resolution, clock skew tolerance | Silent lost updates that only a customer complaint reveals |
 | Rate limiting at the gateway (Chapter 62) | Clients must handle `429` with backoff, and batch endpoints where limits bite | Retry storms that turn throttling into an outage |
-| gRPC with protobuf (Chapter 79) | Field numbers are permanent, fields are only added, nothing is renumbered | Wire incompatibility between versions during a rolling deploy |
-| Long-lived WebSocket connections (Chapter 84) | Per-connection state, heartbeats, reconnect with resume, sticky routing or a shared state store | Silent dead connections and users who stop receiving messages |
+| gRPC with protobuf (Chapter 70) | Field numbers are permanent, fields are only added, nothing is renumbered | Wire incompatibility between versions during a rolling deploy |
+| Long-lived WebSocket connections (Chapter 73) | Per-connection state, heartbeats, reconnect with resume, sticky routing or a shared state store | Silent dead connections and users who stop receiving messages |
 | Distributed lock for a scheduled job (Chapter 51) | Lock has a lease with a timeout, work is idempotent anyway, fencing against a stale lock holder | Two instances running the same job, both believing they hold the lock |
 
 Read the first row against Chapter 2's design. The HLD said "commit Kafka offsets after the work". That single sentence made idempotency a hard requirement in the dispatcher, and Chapter 2 did include the idempotency key, so the chain held. Now imagine an implementer who read only the box diagram. They write a clean, well-tested, non-idempotent consumer. It is excellent LLD. It sends some customers two "your order shipped" messages every time a pod restarts, and the bug is unfixable by any amount of tidying, because the requirement was structural and unstated.
@@ -192,7 +192,7 @@ The reverse direction is real too, and it is why designing without looking insid
 | Warm-up takes 90 seconds before the service is useful | Deployment strategy, health check design, and autoscaling reaction time all change |
 | One request needs 700 MB of heap | Instance sizing, packing density, and cost model change. Maybe the work must be split |
 | A WebSocket handler holds per-connection state that cannot be externalised | Connection affinity becomes an HLD requirement, and so does a plan for graceful drain |
-| Measurement shows a request needs 40 ms of pure CPU | Capacity planning changes: 25 requests per second per core, so the fleet size follows arithmetic, not hope (Chapter 92) |
+| Measurement shows a request needs 40 ms of pure CPU | Capacity planning changes: 25 requests per second per core, so the fleet size follows arithmetic, not hope (Chapter 78) |
 
 WhatsApp is the classic example of an upward constraint used deliberately. Their choice of Erlang, with extremely lightweight processes and a runtime built for millions of concurrent connections, was a low-level implementation capability. It enabled an architecture that served an enormous user base from a famously small fleet, which a per-connection-thread implementation could not have supported at that time. The implementation capability shaped the architecture, not the other way round.
 
@@ -409,7 +409,7 @@ Engineers coming from relational databases routinely fight this, model their ent
 
 **Stripe put idempotency in the public contract on purpose.** Stripe's API accepts an `Idempotency-Key` header on write requests, and a repeated request with the same key returns the original result rather than performing the action twice. Look at what that is: an HLD-level promise, published in the contract, that clients can build retry logic against. Behind it sits an LLD mechanism, a key store with a retention window, which Stripe can change without breaking a single integration. The observable guarantee is HLD; the mechanism is LLD. That is Section 4.5.2's rule in a shipped product, and it is why every write endpoint you design should copy it.
 
-**WhatsApp is the upward constraint.** Their use of Erlang and the BEAM runtime, with very lightweight processes and per-connection isolation, gave them a per-server concurrent connection capability that a thread-per-connection implementation could not match at the time. That LLD-level capability is what made their small-fleet architecture viable, and the architecture would have been a fantasy on a stack that could not deliver it. Chapter 138 covers the design, and Chapter 84 covers the connection handling.
+**WhatsApp is the upward constraint.** Their use of Erlang and the BEAM runtime, with very lightweight processes and per-connection isolation, gave them a per-server concurrent connection capability that a thread-per-connection implementation could not match at the time. That LLD-level capability is what made their small-fleet architecture viable, and the architecture would have been a fantasy on a stack that could not deliver it. Chapter 103 covers the design, and Chapter 73 covers the connection handling.
 
 ## 4.10 Advantages
 

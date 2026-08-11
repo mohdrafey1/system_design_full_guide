@@ -287,7 +287,7 @@ The payoff. Each target forces specific structure, and this table is the reason 
 | Eventual consistency acceptable | Read replicas, caching, asynchronous fan-out. Cheapest scaling available. Chapter 18 | Low, plus application complexity |
 | Full audit trail | Append-only storage, retention policy, and it cannot be added retroactively. Chapter 5's retrofit table | Low if designed in |
 | Data residency by region | Regional isolation of storage and processing, routing by user, and duplicated infrastructure |  High |
-| Diagnose any user's request end to end | Trace context propagated through every hop, plus retention and sampling. Chapter 70 | Low if designed in, painful later |
+| Diagnose any user's request end to end | Trace context propagated through every hop, plus retention and sampling. Chapter 65 | Low if designed in, painful later |
 | Cost under X per month | Constrains everything above. Often the requirement that decides the design |  |
 
 Read the middle column as a list of things you cannot bolt on. Notice too that two rows actively fight: strong consistency reduces achievable availability, so a design that claims both 99.999 percent and strictly fresh reads is claiming something the physics of distributed systems does not permit. Chapters 14 and 15 make that precise.
@@ -371,7 +371,7 @@ For each non-functional requirement, three things must exist before you can clai
 
 1. **A live measurement.** A dashboard showing the actual SLI, with the target drawn on it. If p99 is a requirement, p99 must be on a graph somebody looks at.
 2. **A test that exercises it before users do.** A load test at the specified condition, a failure injection for the fault tolerance claims, a cost model checked monthly. Chapter 1's exercise was this in miniature.
-3. **An alert on the symptom.** Fire when the SLI degrades, not when CPU is at 70 percent. Chapter 67 covers this properly.
+3. **An alert on the symptom.** Fire when the SLI degrades, not when CPU is at 70 percent. Chapter 64 covers this properly.
 
 Where you measure changes the number, so decide deliberately:
 
@@ -549,7 +549,7 @@ The instructive part is that a bank would rank the opposite way for account bala
 - **Ranking is political.** Asking which requirement may be sacrificed forces stakeholders to admit priorities they would prefer to leave ambiguous, and that conversation can be uncomfortable and slow.
 - **Numbers age.** Traffic doubles, users get less patient, competitors get faster, and a target set two years ago may be irrelevant now.
 - **A perfect NFR sheet does not build the system.** Chapters 5 and 6 together define the problem well; the design and the engineering are still ahead of you.
-- **Percentiles do not aggregate.** You cannot average p99s across services or time windows to get a meaningful p99, which trips up a lot of reporting. Chapter 69 covers how to handle this.
+- **Percentiles do not aggregate.** You cannot average p99s across services or time windows to get a meaningful p99, which trips up a lot of reporting. Chapter 64 covers how to handle this.
 
 ## 6.12 Trade-offs
 

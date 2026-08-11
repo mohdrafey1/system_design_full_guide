@@ -380,7 +380,7 @@ In August 2008, Netflix hit database corruption in their own datacenter that sto
 
 The conclusion they drew was structural. They moved to AWS, replaced the monolith with hundreds of independently deployable services, and treated failure as the normal case rather than the exception. That migration took roughly seven years and finished in 2016. Not a weekend project, which is itself instructive.
 
-What Netflix teaches, and why it appears in Chapter 108:
+What Netflix teaches, and why it appears in Chapter 107:
 
 - They famously built tooling to kill their own instances at random in production, so that surviving instance death became routine rather than an incident. If failure is guaranteed, rehearse it.
 - Video bytes are served from caching appliances placed inside internet service provider networks, physically close to viewers, while control-plane traffic goes to AWS. The heavy data flows on a short path; the smart logic sits centrally.

@@ -312,7 +312,7 @@ public record GCounter(Map<String, Long> counts) {
 }
 ```
 
-Where these apply: counters, sets that only grow, sets with tombstones for removal, registers with a defined tie-break, ordered sequences for collaborative text. Where they do not: anything requiring a global invariant, such as "this counter must never exceed 100", because enforcing that requires knowing about writes you have not yet seen. Chapter 165's collaborative editing case study is built on these.
+Where these apply: counters, sets that only grow, sets with tombstones for removal, registers with a defined tie-break, ordered sequences for collaborative text. Where they do not: anything requiring a global invariant, such as "this counter must never exceed 100", because enforcing that requires knowing about writes you have not yet seen. Chapter 126's collaborative editing case study is built on these.
 
 ### 18.5.6 Choosing the guarantee
 

@@ -128,7 +128,7 @@ There is a repeatable order for producing an HLD. Following it stops you from ma
 
 **Step 1: Requirements, split in two.** Features on the left, numbers on the right. Ten minutes. If nobody has given you the numbers, invent reasonable ones out loud and get them confirmed.
 
-**Step 2: Scale estimate.** Requests per second, read to write ratio, storage per year, peak versus average. Chapter 83 onward is entirely about doing this quickly. You need it now because the answer to every later question is "it depends on the numbers".
+**Step 2: Scale estimate.** Requests per second, read to write ratio, storage per year, peak versus average. Chapter 75 onward is entirely about doing this quickly. You need it now because the answer to every later question is "it depends on the numbers".
 
 **Step 3: API design.** What can a client actually call, and what does it get back? Doing this third is deliberate: it forces you to be concrete about behaviour before you start drawing infrastructure. It also catches missing requirements, because you cannot define an endpoint for a feature nobody specified properly.
 
@@ -181,7 +181,7 @@ return ResponseEntity.ok(order);
 
 The rule of thumb worth memorising: **if the user is not waiting for it, get it off the request path.** Chapter 1's request flow showed why. The notification team's original synchronous design meant a Twilio outage would have failed order updates, which is an absurd coupling once you say it out loud.
 
-A pattern that appears constantly in Part 5: **synchronous on the read path, asynchronous on the write fan-out.** Twitter reads your timeline synchronously from a precomputed list. The work of populating 200 million such lists happens asynchronously. Chapter 114.
+A pattern that appears constantly in Part 5: **synchronous on the read path, asynchronous on the write fan-out.** Twitter reads your timeline synchronously from a precomputed list. The work of populating 200 million such lists happens asynchronously. Chapter 105.
 
 ### 2.5.4 A good HLD has numbers on it
 
@@ -671,7 +671,7 @@ A good HLD is recognisable by three things. It has numbers on it. Every box has 
 
 **Part 1: reverse engineer an HLD.** Take a system you have worked on, or any open source project you can run. Without reading its docs, produce its container-level diagram from the code and config: services, datastores, queues, external dependencies, and every arrow labelled sync or async. Then find the real documentation and compare. What did you miss, and what does that tell you about what is hard to see from code alone?
 
-**Part 2: write a full HLD, from scratch.** Design a **URL shortener** at HLD level only, using the six steps. Do not look at Chapter 108 yet, and do not write code. Constraints to design against:
+**Part 2: write a full HLD, from scratch.** Design a **URL shortener** at HLD level only, using the six steps. Do not look at Chapter 102 yet, and do not write code. Constraints to design against:
 
 - 100 million new short links per year
 - 10 billion redirects per year, with a 100x spike during viral events
@@ -695,7 +695,7 @@ Deliver, on at most three pages:
 
 **Part 4: get it reviewed.** Give it to another engineer with one instruction: find the assumption that would hurt most if it turned out to be wrong. Their answer is usually the most valuable feedback in the exercise.
 
-When you reach Chapter 108, compare. Differences are more instructive than matches, and if your design is simpler and still meets the stated requirements, yours may well be better.
+When you reach Chapter 102, compare. Differences are more instructive than matches, and if your design is simpler and still meets the stated requirements, yours may well be better.
 
 ## 2.20 Further Reading
 

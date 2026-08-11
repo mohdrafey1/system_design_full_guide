@@ -298,7 +298,7 @@ Erasure coding, Reed-Solomon 10 data + 4 parity:
   Repair: read 10 chunks and recompute. More CPU and network per repair.
 ```
 
-Erasure coding gives better fault tolerance at a third of the storage cost, which is why large object stores use it. The trade is complexity, higher repair cost, and worse small-object efficiency, which is why databases generally use replication for their hot data and erasure coding shows up in the archival tiers. Chapter 160 goes into distributed file storage properly.
+Erasure coding gives better fault tolerance at a third of the storage cost, which is why large object stores use it. The trade is complexity, higher repair cost, and worse small-object efficiency, which is why databases generally use replication for their hot data and erasure coding shows up in the archival tiers. Chapter 110 goes into distributed file storage properly.
 
 One clarification worth making, because the numbers get conflated: **durability and availability are different promises.** An object store may offer eleven nines of durability and four nines of availability, meaning your data is essentially never lost and is occasionally unreachable for a few minutes. Losing access temporarily and losing data permanently are different incidents with different responses.
 

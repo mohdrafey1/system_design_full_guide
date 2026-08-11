@@ -495,11 +495,11 @@ The last two rows are in this table on purpose. They are components of your syst
 
 **Twitter's timeline problem is the canonical skew story.** Delivering a tweet by writing it into every follower's timeline is fast to read and expensive to write, and the write cost is proportional to follower count. For most users that is a handful to a few thousand writes, which is fine. For an account with tens of millions of followers it is not, and it produces exactly the hotspot arithmetic from Section 9.5.5: one key's cost is unbounded while the average is small.
 
-Their well-documented answer is hybrid: fan out on write for ordinary accounts, and for very high-follower accounts do not fan out at all, instead merging their posts in at read time. Two code paths, chosen per account, because no single strategy is correct across a distribution this skewed. Chapter 141 designs this in full, and the general lesson is that **when a distribution has a long tail, the right answer is often two mechanisms rather than one clever mechanism.**
+Their well-documented answer is hybrid: fan out on write for ordinary accounts, and for very high-follower accounts do not fan out at all, instead merging their posts in at read time. Two code paths, chosen per account, because no single strategy is correct across a distribution this skewed. Chapter 105 designs this in full, and the general lesson is that **when a distribution has a long tail, the right answer is often two mechanisms rather than one clever mechanism.**
 
 **Facebook's memcache work names both the stampede and the connection problem.** Their published account of scaling memcache describes using leases so that when a key is missing, one client is granted the right to fetch and set it while others wait, which is Section 9.5.5's coalescing implemented at the cache layer. The same work discusses the difficulties created by very large numbers of clients each connecting to very many cache servers, and the network incast that results when one client's request fans out and all the responses arrive simultaneously.
 
-Both are the same shape as Section 9.1's failures: one is concurrent identical work on a hot key, the other is a quantity that grows with the product of clients and servers rather than with useful load. Chapter 159 covers distributed caches in detail.
+Both are the same shape as Section 9.1's failures: one is concurrent identical work on a hot key, the other is a quantity that grows with the product of clients and servers rather than with useful load. Chapter 123 covers distributed caches in detail.
 
 ## 9.10 Advantages
 
