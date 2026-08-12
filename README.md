@@ -4,7 +4,7 @@ A full-length System Design book, written from first principles for engineers wh
 
 Not a summary. Not an interview cheat sheet. Every chapter opens with a real production failure, explains why the failure was structural rather than accidental, and builds the concept from there.
 
-**Current state: 36 chapters written of 118 planned.** See [Progress](#progress) below.
+**Current state: 37 chapters written of 118 planned.** See [Chapters written](#chapters-written) below.
 
 ## Who this is for
 
@@ -31,7 +31,7 @@ Nothing is assumed beyond that. Terminology is defined on first use in Chapter 1
 | 8. Practice | 134 to 137 | 400 questions with worked explanations |
 | 9. Revision | 138 to 145 | Cheat sheets, formulas, checklists, glossary, ninety-day roadmap |
 
-The authoritative chapter map, including which original chapters were merged and why, is in [system-design-book-00-contents-and-numbering.md](system-design-book-00-contents-and-numbering.md).
+The authoritative chapter map, including which original chapters were merged and why, is in [contents-and-numbering.md](contents-and-numbering.md).
 
 ## Every chapter has the same twenty sections
 
@@ -64,23 +64,39 @@ Section 1 is always a specific failure with numbers attached, usually from the s
 
 ## Conventions
 
-- Chapter files are `system-design-book-chapter-NN.md`, one chapter per file.
+- Chapter files are named `topic-name-ch-N.md`, one chapter per file, so the topic is visible in the filename.
 - Mermaid for diagrams, with ASCII alongside where the diagram matters.
 - Java and Spring Boot for code, except where the topic demands SQL, Redis commands, JSON, or YAML.
 - No em dashes or en dashes anywhere, so the text pastes cleanly into any editor.
 - Production examples are drawn from published engineering work by Netflix, Google, Amazon, Uber, Meta, Stripe, Cloudflare, Discord, Shopify and others, cited in section 20.
 
-## Progress
+## Chapters written
 
-| Part | Written | Planned |
-|---|---|---|
-| 1. Fundamentals | 36 (Ch 1 to 36) | 74 |
-| 2 to 9 | 0 | 44 |
-| **Total** | **36** | **118** |
+**37 of 118.** All of Part 1 so far, taking the book from "what is system design" through requirements, the non-functional properties, consistency models, scaling, the network layer, the full caching tier, and into the relational database.
 
-Chapters 1 to 36 take the book from "what is system design" through requirements, the non-functional properties, consistency, scaling, the network layer, and the full caching tier including Redis and Memcached.
+| # | Chapter | # | Chapter |
+|---|---|---|---|
+| 1 | [What Is System Design?](what-is-system-design-ch-1.md) | 20 | [Idempotency](idempotency-ch-20.md) |
+| 2 | [High Level Design](high-level-design-ch-2.md) | 21 | [Horizontal Scaling](horizontal-scaling-ch-21.md) |
+| 3 | [Low Level Design](low-level-design-ch-3.md) | 22 | [Vertical Scaling](vertical-scaling-ch-22.md) |
+| 4 | [HLD vs LLD](hld-vs-lld-ch-4.md) | 23 | [Stateless Services](stateless-services-ch-23.md) |
+| 5 | [Functional Requirements](functional-requirements-ch-5.md) | 24 | [Stateful Services](stateful-services-ch-24.md) |
+| 6 | [Non-Functional Requirements](non-functional-requirements-ch-6.md) | 25 | [Monolith](monolith-ch-25.md) |
+| 7 | [Latency](latency-ch-7.md) | 26 | [Microservices](microservices-ch-26.md) |
+| 8 | [Throughput](throughput-ch-8.md) | 27 | [Service Mesh](service-mesh-ch-27.md) |
+| 9 | [Scalability](scalability-ch-9.md) | 28 | [API Gateway](api-gateway-ch-28.md) |
+| 10 | [Availability](availability-ch-10.md) | 29 | [Reverse Proxy](reverse-proxy-ch-29.md) |
+| 11 | [Reliability](reliability-ch-11.md) | 30 | [Load Balancer](load-balancer-ch-30.md) |
+| 12 | [Durability](durability-ch-12.md) | 31 | [DNS](dns-ch-31.md) |
+| 13 | [Fault Tolerance](fault-tolerance-ch-13.md) | 32 | [CDN](cdn-ch-32.md) |
+| 14 | [CAP Theorem](cap-theorem-ch-14.md) | 33 | [Caching](caching-ch-33.md) |
+| 15 | [PACELC](pacelc-ch-15.md) | 34 | [Cache Invalidation](cache-invalidation-ch-34.md) |
+| 16 | [ACID](acid-ch-16.md) | 35 | [Redis](redis-ch-35.md) |
+| 17 | [BASE](base-ch-17.md) | 36 | [Memcached](memcached-ch-36.md) |
+| 18 | [Eventual Consistency](eventual-consistency-ch-18.md) | 37 | [SQL](sql-ch-37.md) |
+| 19 | [Strong Consistency](strong-consistency-ch-19.md) | | |
 
-**Next: Chapter 37, SQL.**
+**Next: Chapter 38, NoSQL.**
 
 ### Why 118 chapters and not 194
 
