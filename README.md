@@ -4,7 +4,7 @@ A full-length System Design book, written from first principles for engineers wh
 
 Not a summary. Not an interview cheat sheet. Every chapter opens with a real production failure, explains why the failure was structural rather than accidental, and builds the concept from there.
 
-**Current state: 37 chapters written of 118 planned.** See [Chapters written](#chapters-written) below.
+**Current state: 47 chapters written of 118 planned.** See [Chapters written](#chapters-written) below.
 
 ## Who this is for
 
@@ -72,31 +72,36 @@ Section 1 is always a specific failure with numbers attached, usually from the s
 
 ## Chapters written
 
-**37 of 118.** All of Part 1 so far, taking the book from "what is system design" through requirements, the non-functional properties, consistency models, scaling, the network layer, the full caching tier, and into the relational database.
+**47 of 118.** All of Part 1 so far, taking the book from "what is system design" through requirements, the non-functional properties, consistency models, scaling, the network layer, the full caching tier, and the complete data layer from SQL through replication, sharding, and partitioning.
 
 | # | Chapter | # | Chapter |
 |---|---|---|---|
-| 1 | [What Is System Design?](what-is-system-design-ch-1.md) | 20 | [Idempotency](idempotency-ch-20.md) |
-| 2 | [High Level Design](high-level-design-ch-2.md) | 21 | [Horizontal Scaling](horizontal-scaling-ch-21.md) |
-| 3 | [Low Level Design](low-level-design-ch-3.md) | 22 | [Vertical Scaling](vertical-scaling-ch-22.md) |
-| 4 | [HLD vs LLD](hld-vs-lld-ch-4.md) | 23 | [Stateless Services](stateless-services-ch-23.md) |
-| 5 | [Functional Requirements](functional-requirements-ch-5.md) | 24 | [Stateful Services](stateful-services-ch-24.md) |
-| 6 | [Non-Functional Requirements](non-functional-requirements-ch-6.md) | 25 | [Monolith](monolith-ch-25.md) |
-| 7 | [Latency](latency-ch-7.md) | 26 | [Microservices](microservices-ch-26.md) |
-| 8 | [Throughput](throughput-ch-8.md) | 27 | [Service Mesh](service-mesh-ch-27.md) |
-| 9 | [Scalability](scalability-ch-9.md) | 28 | [API Gateway](api-gateway-ch-28.md) |
-| 10 | [Availability](availability-ch-10.md) | 29 | [Reverse Proxy](reverse-proxy-ch-29.md) |
-| 11 | [Reliability](reliability-ch-11.md) | 30 | [Load Balancer](load-balancer-ch-30.md) |
-| 12 | [Durability](durability-ch-12.md) | 31 | [DNS](dns-ch-31.md) |
-| 13 | [Fault Tolerance](fault-tolerance-ch-13.md) | 32 | [CDN](cdn-ch-32.md) |
-| 14 | [CAP Theorem](cap-theorem-ch-14.md) | 33 | [Caching](caching-ch-33.md) |
-| 15 | [PACELC](pacelc-ch-15.md) | 34 | [Cache Invalidation](cache-invalidation-ch-34.md) |
-| 16 | [ACID](acid-ch-16.md) | 35 | [Redis](redis-ch-35.md) |
-| 17 | [BASE](base-ch-17.md) | 36 | [Memcached](memcached-ch-36.md) |
-| 18 | [Eventual Consistency](eventual-consistency-ch-18.md) | 37 | [SQL](sql-ch-37.md) |
-| 19 | [Strong Consistency](strong-consistency-ch-19.md) | | |
+| 1 | [What Is System Design?](what-is-system-design-ch-1.md) | 25 | [Monolith](monolith-ch-25.md) |
+| 2 | [High Level Design](high-level-design-ch-2.md) | 26 | [Microservices](microservices-ch-26.md) |
+| 3 | [Low Level Design](low-level-design-ch-3.md) | 27 | [Service Mesh](service-mesh-ch-27.md) |
+| 4 | [HLD vs LLD](hld-vs-lld-ch-4.md) | 28 | [API Gateway](api-gateway-ch-28.md) |
+| 5 | [Functional Requirements](functional-requirements-ch-5.md) | 29 | [Reverse Proxy](reverse-proxy-ch-29.md) |
+| 6 | [Non-Functional Requirements](non-functional-requirements-ch-6.md) | 30 | [Load Balancer](load-balancer-ch-30.md) |
+| 7 | [Latency](latency-ch-7.md) | 31 | [DNS](dns-ch-31.md) |
+| 8 | [Throughput](throughput-ch-8.md) | 32 | [CDN](cdn-ch-32.md) |
+| 9 | [Scalability](scalability-ch-9.md) | 33 | [Caching](caching-ch-33.md) |
+| 10 | [Availability](availability-ch-10.md) | 34 | [Cache Invalidation](cache-invalidation-ch-34.md) |
+| 11 | [Reliability](reliability-ch-11.md) | 35 | [Redis](redis-ch-35.md) |
+| 12 | [Durability](durability-ch-12.md) | 36 | [Memcached](memcached-ch-36.md) |
+| 13 | [Fault Tolerance](fault-tolerance-ch-13.md) | 37 | [SQL](sql-ch-37.md) |
+| 14 | [CAP Theorem](cap-theorem-ch-14.md) | 38 | [NoSQL](nosql-ch-38.md) |
+| 15 | [PACELC](pacelc-ch-15.md) | 39 | [Database Indexing](database-indexing-ch-39.md) |
+| 16 | [ACID](acid-ch-16.md) | 40 | [Query Optimization](query-optimization-ch-40.md) |
+| 17 | [BASE](base-ch-17.md) | 41 | [Replication](replication-ch-41.md) |
+| 18 | [Eventual Consistency](eventual-consistency-ch-18.md) | 42 | [Sharding](sharding-ch-42.md) |
+| 19 | [Strong Consistency](strong-consistency-ch-19.md) | 43 | [Partitioning](partitioning-ch-43.md) |
+| 20 | [Idempotency](idempotency-ch-20.md) | 44 | [Leader-Follower Replication](leader-follower-replication-ch-44.md) |
+| 21 | [Horizontal Scaling](horizontal-scaling-ch-21.md) | 45 | [Multi-Leader Replication](multi-leader-replication-ch-45.md) |
+| 22 | [Vertical Scaling](vertical-scaling-ch-22.md) | 46 | [Leaderless Databases](leaderless-databases-ch-46.md) |
+| 23 | [Stateless Services](stateless-services-ch-23.md) | 47 | [Read Replicas](read-replicas-ch-47.md) |
+| 24 | [Stateful Services](stateful-services-ch-24.md) | | |
 
-**Next: Chapter 38, NoSQL.**
+**Next: Chapter 48, Database Failover.**
 
 ### Why 118 chapters and not 194
 
